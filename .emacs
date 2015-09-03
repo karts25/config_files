@@ -63,3 +63,6 @@
 (add-to-list 'load-path (expand-file-name "~/elisp"))
 (require 'ctags-update)
 (ctags-auto-update-mode 1)
+
+(setq tags-table-list
+      '("/home/klakshmanan/Code/av/TAGS"))
