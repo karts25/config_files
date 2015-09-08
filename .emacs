@@ -12,16 +12,13 @@
 (electric-pair-mode 1)
 (show-paren-mode 1)
 (setq paren-highlight-offscreen t)
-(column-number-mode 1)
 
+(column-number-mode 1)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4) 
 (setq-default c-basic-offset 4)
 (global-set-key (kbd "C-x C-o") 'ff-find-other-file)
 (global-set-key (kbd "<escape>")      'keyboard-escape-quit)
-
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
 
 (auto-fill-mode 1)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -63,6 +60,11 @@
 (add-to-list 'load-path (expand-file-name "~/elisp"))
 (require 'ctags-update)
 (ctags-auto-update-mode 1)
+
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-smart-tab-mode)
+
 
 (setq tags-table-list
       '("/home/klakshmanan/Code/av/TAGS"))
