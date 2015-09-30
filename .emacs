@@ -18,7 +18,7 @@
 (setq-default tab-width 4) 
 (setq-default c-basic-offset 4)
 (global-set-key (kbd "C-x C-o") 'ff-find-other-file)
-(global-set-key (kbd "<escape>")      'keyboard-escape-quit)
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (auto-fill-mode 1)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -52,12 +52,14 @@
 (global-set-key [f3] 'ftf-grepsource)
 (global-set-key [f4] 'ftf-gdb)
 (global-set-key [f5] 'ftf-compile)
+(setq compile-command "./rops build -j50 -k100")
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (add-to-list 'load-path (expand-file-name "~/elisp"))
+
 (require 'ctags-update)
 (ctags-auto-update-mode 1)
 
@@ -67,4 +69,8 @@
 
 
 (setq tags-table-list
-      '("/home/klakshmanan/Code/av/TAGS"))
+      '("/home/klakshmanan/Code/av/source/TAGS"))
+
+(global-set-key (kbd "C-x C-z") nil)
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-/") 'comment-region)
