@@ -29,21 +29,15 @@
 ;; Switch between header and source
 (global-set-key (kbd "C-x C-o") 'ff-find-other-file)
 
-(defcustom ftf-filetypes
-'("*.h" "*.hh" "*.hpp" "*.cpp" "*.c" "*.cc" "*.cpp" "*.inl" "*.grd" "*.idl" "*.m"
-  "*.mm" "*.py" "*.sh" "*.cfg" "*.proto")
-"A list of filetype patterns that grepsource will use."
-:group 'find-things-fast
-:type '(repeat string))
-
-;;;###autoload
-(defun ftf-add-filetypes (types)
-    "Makes `ftf-filetypes' local to this buffer and adds the
-elements of list types to the list"
-    (make-local-variable 'ftf-filetypes)
-    (dolist (type types)
-      (add-to-list 'ftf-filetypes type)))
-
+:config
+(setq ftf-filetypes
+      '("*.dart" "*.tmpl" "*.js" "*.gni" "*.gn" "*.mojom" "*.h" "*.hpp"
+	"*.cpp" "*.c" "*.cc" "*.cpp" "*.inl" "*.grd" "*.idl" "*.m" "*.mm"
+	"*.h" "*.hh" "*.proto"
+	"*.py" "*.sh" "*.cfg" "*SConscript" "SConscript*" "*.scons"
+	"*.vcproj" "*.vsprops" "*.make" "*.gyp" "*.gypi" "*.el" "*.md"))
+;;(require 'no-easy-keys)
+;;(no-easy-keys 1)
 ;; -------------------------------------------------
 ;;
 (setq compile-command "bazel build ...")
@@ -52,7 +46,7 @@ elements of list types to the list"
 
 (add-hook 'after-init-hook 'global-company-mode)
 (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-irony))
+  '(add-to-list 'company-backends 'company-irony))
 
 (setq c-default-style "linux"
       c-basic-offset 4)
